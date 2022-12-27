@@ -12,7 +12,6 @@ class GetMovieListUseCase @Inject constructor(
     suspend fun invoke() = flow<UseCaseState<MovieListResponse>>{
         try {
             emit(UseCaseState.Success(movieListNetworkRepository.getMovies()))
-
         } catch (e: Exception) {
             emit(UseCaseState.Error(e.message.toString()))
         }
