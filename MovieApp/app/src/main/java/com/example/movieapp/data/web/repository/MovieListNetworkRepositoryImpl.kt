@@ -1,6 +1,7 @@
 package com.example.movieapp.data.web.repository
 
 import android.security.identity.ResultData
+import com.example.movieapp.data.web.model.Movie
 import com.example.movieapp.data.web.model.MovieListRequest
 import com.example.movieapp.data.web.model.MovieListResponse
 import com.example.movieapp.data.web.service.MovieListServices
@@ -14,7 +15,7 @@ import javax.inject.Inject
 class MovieListNetworkRepositoryImpl @Inject constructor(
     private val movieListServices : MovieListServices
 ) : MovieListNetworkRepository {
-    override suspend fun getMovies(): MovieListResponse = withContext(Dispatchers.IO){
+    override suspend fun getMovies(): MovieListRequest = withContext(Dispatchers.IO){
         movieListServices.getMovies()
     }
 }
