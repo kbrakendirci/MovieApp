@@ -1,10 +1,7 @@
 package com.example.movieapp.data.web.service
 
 import com.example.movieapp.Constant
-import com.example.movieapp.data.web.model.Movie
 import com.example.movieapp.data.web.model.MovieListRequest
-import com.example.movieapp.data.web.model.MovieListResponse
-import com.example.movieapp.data.web.model.PopularMovie
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
