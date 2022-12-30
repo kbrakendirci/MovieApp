@@ -1,7 +1,6 @@
 package com.example.movieapp.ui.listmovie
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -18,6 +17,11 @@ import com.squareup.picasso.Picasso
 
 class MovieListFragmentAdapter(private val listAdapterListener: ListAdapterListener<Movie>) :
     ListAdapter<Movie, MovieListFragmentAdapter.ViewHolder>(ViewHolder.DiffUtils()) {
+    private var movieList = mutableListOf<Movie>()
+
+    fun setList(list: Movie) {
+            this.movieList.addAll(listOf(list))
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)

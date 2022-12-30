@@ -2,6 +2,7 @@ package com.example.movieapp.data.web.service
 
 import com.example.movieapp.Constant
 import com.example.movieapp.data.web.model.MovieListRequest
+import com.example.movieapp.data.web.model.moviedetail.MovieDetails
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -21,5 +22,12 @@ interface MovieListServices {
        @Query("api_key")
        apiKey: String = Constant.API_KEY
    ): MovieListRequest
+
+    @GET("/")
+    fun getMovieDetails(
+        @Query("apikey") apiKey: String = Constant.API_KEY,
+        @Query("i") id: String
+    ): MovieDetails
+
 
 }
