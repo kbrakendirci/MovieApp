@@ -1,5 +1,6 @@
 package com.example.movieapp.ui.listmovie
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,9 +14,10 @@ import com.example.movieapp.data.web.model.Movie
 import com.example.movieapp.data.web.model.deneme.OnBoard
 import com.example.movieapp.databinding.FragmentMovieListBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.SharedFlow
 
 @AndroidEntryPoint
-class MovieListFragment : BaseFragment<FragmentMovieListBinding>(FragmentMovieListBinding::inflate), ListAdapterListener<OnBoard> {
+class MovieListFragment : BaseFragment<FragmentMovieListBinding>(FragmentMovieListBinding::inflate), ListAdapterListener<Movie> {
 
     private val viewModel: MovieListViewModel by viewModels()
 
@@ -27,9 +29,8 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding>(FragmentMovieLi
             MovieListFragmentAdapter(this)
         }
 
-
     override fun setupUI(savedInstanceState: Bundle?) {
-        viewModel.getMovieListUseCaseState()
+       val a=  viewModel.getMovieListUseCaseState()
         setupAdapter()
         var dataList = mutableListOf<OnBoard>()
 
@@ -39,6 +40,7 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding>(FragmentMovieLi
         dataList.add(OnBoard("Tekrar Tekrar","https://daily-mix.scdn.co/covers/on_repeat/PZN_On_Repeat2_LARGE-en.jpg",))
 
 
-        productListAdapter.submitList(dataList)
     }
+
+
 }
