@@ -1,7 +1,7 @@
 package com.example.movieapp.data.web.service
 
 import com.example.movieapp.Constant
-import com.example.movieapp.data.web.model.MovieListRequest
+import com.example.movieapp.data.web.model.MovieListResponse
 import com.example.movieapp.data.web.model.moviedetail.MovieDetails
 import retrofit2.Call
 import retrofit2.http.GET
@@ -21,7 +21,7 @@ interface MovieListServices {
        pageNumber: Int = 1,
        @Query("api_key")
        apiKey: String = Constant.API_KEY
-   ): MovieListRequest
+   ): MovieListResponse
 
     @GET("/")
     fun getMovieDetails(
