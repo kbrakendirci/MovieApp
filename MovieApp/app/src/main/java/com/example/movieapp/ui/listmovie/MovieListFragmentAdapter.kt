@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.movieapp.Constant
 import com.example.movieapp.R
 import com.example.movieapp.data.web.model.MovieListResponse
 import kotlinx.android.synthetic.main.item_populer_movie_list.view.*
@@ -47,7 +48,7 @@ class MovieListFragmentAdapter: RecyclerView.Adapter<MovieListFragmentAdapter.Mo
             txtMovieTitle.text = listItem.title
             Glide.with(this)
                 .apply { RequestOptions().override(120, 120).fitCenter() }
-                .load(listItem.id)
+                .load(Constant.POSTER_BASE_URL+listItem.backdropPath)
                 .into(imgMovie)
             rootView.setOnClickListener {
                 onItemClickListener?.invoke(listItem.id.toString())

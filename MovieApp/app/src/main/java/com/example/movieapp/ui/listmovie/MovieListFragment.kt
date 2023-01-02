@@ -25,25 +25,23 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding>(FragmentMovieLi
         }
 
     override fun setupUI(savedInstanceState: Bundle?) {
-         viewModel.getMovieListUseCaseState()
-
+         setupAdapter()
         viewModel.listLiveData.observe(this){
-            it?.let { ::handleMovieList }
+            handleMovieList(it)
         }
-
+        viewModel.getMovieListUseCaseState()
         movieListAdapter.setOnItemClickListener {
             // Do it navigation in here
         }
     }
 
-    private fun handleMovieList(status: LiveData<UseCaseState<MovieListResponse>>) {
-        when (status.value) {
+    private fun handleMovieList(status: UseCaseState<MovieListResponse>) {
+        when (status) {
             is UseCaseState.Error -> {
                 // close the loading view
             }
             is UseCaseState.Success -> {
-                setupAdapter()
-                movieListAdapter.differ.submitList(status?.value?.data?.results)
+                movieListAdapter.differ.submitList(status?.data?.results)
             }
             else -> {
                 // close the loading view
