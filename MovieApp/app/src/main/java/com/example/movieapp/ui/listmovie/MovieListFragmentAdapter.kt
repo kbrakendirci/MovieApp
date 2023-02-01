@@ -11,7 +11,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.movieapp.Constant
 import com.example.movieapp.R
 import com.example.movieapp.data.web.model.MovieListResponse
-import kotlinx.android.synthetic.main.item_populer_movie_list.view.*
+import kotlinx.android.synthetic.main.item_movielist.view.*
 
 class MovieListFragmentAdapter: RecyclerView.Adapter<MovieListFragmentAdapter.MovieListFragmentViewHolder>() {
 
@@ -38,18 +38,19 @@ class MovieListFragmentAdapter: RecyclerView.Adapter<MovieListFragmentAdapter.Mo
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListFragmentViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view: View = inflater.inflate(R.layout.item_populer_movie_list, parent, false)
+        val view: View = inflater.inflate(R.layout.movie_list_item, parent, false)
         return MovieListFragmentViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: MovieListFragmentViewHolder, position: Int) {
         val listItem = differ.currentList[position]
         holder.itemView.apply {
-            txtMovieTitle.text = listItem.title
+            txtMovieTitle.text= listItem.title
+            //voteTextView.text= listItem.voteAverage.toString()
             Glide.with(this)
                 .apply { RequestOptions().override(120, 120).fitCenter() }
                 .load(Constant.POSTER_BASE_URL+listItem.backdropPath)
-                .into(imgMovie)
+                .into(imagePoster)
             rootView.setOnClickListener {
                 onItemClickListener?.invoke(listItem.id.toString())
             }

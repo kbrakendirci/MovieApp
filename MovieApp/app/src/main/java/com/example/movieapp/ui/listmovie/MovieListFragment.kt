@@ -12,7 +12,7 @@ import com.example.movieapp.databinding.FragmentMovieListBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MovieListFragment : BaseFragment<FragmentMovieListBinding>(FragmentMovieListBinding::inflate) {
+class MovieListFragment : BaseFragment<FragmentMovieListBinding>(FragmentMovieListBinding::inflate){
 
     private val viewModel: MovieListViewModel by viewModels()
 
@@ -48,6 +48,4 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding>(FragmentMovieLi
             }
         }
     }
-
-
 }
