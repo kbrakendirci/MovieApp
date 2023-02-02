@@ -33,7 +33,7 @@ class MovieListFragment :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         movieListAdapter.setOnItemClickListener {
-            val action = MovieListFragmentDirections.actionMovieListFragmentToMovieDetailFragment()
+            val action = MovieListFragmentDirections.actionMovieListFragmentToMovieDetailFragment(it.toInt())
             findNavController().navigate(action)
         }
     }

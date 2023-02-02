@@ -1,6 +1,7 @@
 package com.example.movieapp.data.web.repository
 
 import com.example.movieapp.data.web.model.MovieListResponse
+import com.example.movieapp.data.web.model.moviedetail.MovieDetailResponse
 import com.example.movieapp.data.web.model.moviedetail.MovieDetails
 import com.example.movieapp.data.web.service.MovieListServices
 import com.example.movieapp.domain.repository.MovieListNetworkRepository
@@ -15,7 +16,7 @@ class MovieListNetworkRepositoryImpl @Inject constructor(
         movieListServices.getMovies()
     }
 
-    override suspend fun getMovieDetails(movieId: String): MovieDetails {
+    override suspend fun getMovieDetails(movieId: String): MovieDetailResponse {
         return movieListServices.getMovieDetails(id = movieId)
     }
 }

@@ -22,5 +22,9 @@
         android:id="@+id/movieDetailFragment"
         android:name="com.example.movieapp.ui.moviedetails.MovieDetailFragment"
         android:label="MovieDetailFragment"
-        tools:layout="@layout/fragment_movie_detail"/>
+        tools:layout="@layout/fragment_movie_detail">
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+    </fragment>
 </navigation>
